@@ -1,0 +1,16 @@
+/* Override W3C copyright with DAISY copyright */
+.head .copyright {
+    display: none;
+}
+
+.head::after {
+    content: "Copyright \00a9  DAISY Consortium 2026";
+    display: block;
+    margin-top: 1em;
+}
+
+/* Hide ReSpec menu button */
+.respec-button,
+#respec-ui {
+    display: none !important;
+}

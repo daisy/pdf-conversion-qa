@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DAISY Consortium PDF Conversion Quality Framework</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+        var respecConfig = {
+            specStatus: "base",
+            subtitle: "Working Draft",
+            shortName: "pdf-conversion-qa",
+            publishDate: "2026-04-06",
+            edDraftURI: "https://ways2read.github.io/pdf-conversion-qa/framework/draft/",
+            thisVersion: "https://ways2read.github.io/pdf-conversion-qa/framework/published/WD-20260406/",
+            latestVersion: "https://ways2read.github.io/pdf-conversion-qa/framework/draft/",
+            github: {
+                repoURL: "https://github.com/ways2read/pdf-conversion-qa/",
+                branch: "main"
+            },
+            editors: [
+                {
+                    name: "Richard Orme",
+                    company: "DAISY Consortium",
+                    companyURL: "https://daisy.org/"
+                },
+                {
+                    name: "Prashant Verma",
+                    company: "DAISY Consortium",
+                    companyURL: "https://daisy.org/"
+                }
+            ],
+            logos: [
+                {
+                    src: "../../../common/images/daisy_high.jpg",
+                    alt: "Logo: DAISY Consortium",
+                    width: 112,
+                    height: 100,
+                    url: "https://daisy.org/"
+                }
+            ],
+            maxTocLevel: 4,
+            includePermalinks: true,
+            noReSpecUI: true
+        };
+    </script>
+    <link rel="stylesheet" type="text/css" href="../../../common/styles.css">
+</head>
+<body>
+    <section id="abstract">
+        <p>
+            The DAISY Consortium PDF Conversion Quality Framework describes a
+            transparent, repeatable and extensible methodology for evaluating
+            services that convert PDF documents to structured documents. It
+            assesses the accuracy, completeness and quality of each service by
+            comparing its output against verified reference materials, so that
+            organizations producing accessible publications can make
+            evidence-based decisions about which conversion services to use.
+        </p>
+    </section>
+
+    <section id="sotd">
+        <p>
+            This is a Working Draft. It was developed in consultation
+            with the DAISY Consortium AI Special Interest Group. Comments are
+            welcome as
+            <a href="https://github.com/ways2read/pdf-conversion-qa/issues">issues on GitHub</a>.
+        </p>
+    </section>
+
+    <section id="overview">
+        <h2>Overview</h2>
+        <p>
+            The DAISY Consortium is developing a methodology to evaluate PDF to
+            structured document conversion services. The purpose is to assess
+            the accuracy, completeness, and quality of various conversion
+            methods by comparing their outputs against verified reference
+            materials.
+        </p>
+        <p>
+            Many DAISY Consortium members convert PDF source documents to more
+            accessible versions (DAISY format, EPUB, Word, HTML) or alternative
+            formats (audio, braille) of publications for people with print
+            disabilities. These publications are diverse, but include
+            textbooks, novels, journal articles, and other materials.
+        </p>
+        <p>
+            The methodology is intended to be a transparent, repeatable, and
+            extensible process that can be regularly refreshed as new services
+            and techniques become available. The results can be used to make
+            evidence-based decisions on which services are integrated into
+            DAISY production tools and to assist members in choosing which
+            conversion services to use.
+        </p>
+    </section>
+
+    <section id="methodology">
+        <h2>Evaluation Methodology</h2>
+
+        <section id="reference-materials">
+            <h3>Reference Materials</h3>
+            <p>The evaluation process uses two key reference documents:</p>
+            <dl>
+                <dt>Reference PDF</dt>
+                <dd>
+                    A carefully selected source document containing diverse
+                    content types that commonly appear in publications,
+                    including headings, images, lists, tables, mathematical
+                    expressions, footnotes, and text in multiple scripts.
+                </dd>
+                <dt>Ground Truth Document</dt>
+                <dd>
+                    A manually converted and thoroughly proofread version of
+                    the reference PDF, which serves as the verified standard
+                    for comparison. This document has been quality-assured to
+                    ensure accuracy and completeness.
+                </dd>
+            </dl>
+        </section>
+
+        <section id="evaluation-process">
+            <h3>Evaluation Process</h3>
+            <p>
+                Each conversion service being evaluated will process the
+                reference PDF to produce a structured markdown document. These
+                converted versions will then be systematically compared against
+                the ground truth document using the evaluation criteria
+                detailed below.
+            </p>
+        </section>
+    </section>
+
+    <section id="criteria">
+        <h2>Evaluation Criteria</h2>
+        <p>
+            The evaluation framework encompasses three main categories:
+            conversion and markup quality, generated content, and standards
+            compliance. These criteria were developed in consultation with the
+            DAISY Consortium AI Special Interest Group.
+        </p>
+
+        <section id="conversion-markup-quality">
+            <h3>Conversion and Markup Quality</h3>
+
+            <section id="latin-script">
+                <h4>Latin Script Extraction</h4>
+                <ul>
+                    <li>Does the conversion process accurately extract all text in the Latin script, including accented and special characters?</li>
+                    <li>Does the process accurately recognize all text in the Latin script, including accented and special characters from a scanned PDF?</li>
+                </ul>
+            </section>
+
+            <section id="non-latin-script">
+                <h4>Non-Latin Script Extraction</h4>
+                <ul>
+                    <li>Does the conversion process accurately extract all text in non-Latin scripts (Arabic, Hanzi, Cyrillic, Devanagari, etc.)?</li>
+                    <li>Does the process accurately recognize all text in non-Latin scripts (Arabic, Hanzi, Cyrillic, Devanagari, etc.) from a scanned PDF?</li>
+                    <li>Is text correctly extracted from documents containing multiple languages, including where scripts change mid-paragraph?</li>
+                    <li>Is text in right-to-left scripts (Arabic, Hebrew) extracted in the correct reading order?</li>
+                    <li>Is text in vertical writing modes (top-to-bottom, as used in Japanese and traditional Chinese) extracted correctly?</li>
+                    <li>In documents mixing horizontal and vertical writing modes, is text in each section extracted according to its own writing direction?</li>
+                </ul>
+            </section>
+
+            <section id="document-structure">
+                <h4>Document Structure and Organization</h4>
+                <ul>
+                    <li>Is content presented in a logical reading order that reflects the document's structure?</li>
+                    <li>Are unnecessary elements, such as running headers and footers, correctly ignored?</li>
+                    <li>Are heading levels properly identified and maintained?</li>
+                    <li>Are print page numbers included correctly?</li>
+                </ul>
+            </section>
+
+            <section id="text-markup">
+                <h4>Text Markup</h4>
+                <ul>
+                    <li>Are list structures (ordered, unordered, nested) properly identified and marked up?</li>
+                    <li>Are semantic elements such as block quotes, and asides appropriately marked up?</li>
+                    <li>Is text formatting (bold, italic, underline, superscript, subscript) recognized correctly?</li>
+                    <li>Are different languages within the document correctly identified and marked up?</li>
+                </ul>
+            </section>
+
+            <section id="hyperlinks">
+                <h4>Hyperlinks</h4>
+                <ul>
+                    <li>Are plain hyperlinks correctly marked up?</li>
+                    <li>Are embedded hyperlinks (URLs with link text) correctly marked up?</li>
+                </ul>
+            </section>
+
+            <section id="specialized-content">
+                <h4>Specialized Content</h4>
+                <ul>
+                    <li>Are footnotes and endnotes handled appropriately?</li>
+                    <li>Are mathematical expressions converted accurately to LaTeX or MathML?</li>
+                </ul>
+            </section>
+
+            <section id="images-tables">
+                <h4>Images and Tables</h4>
+                <ul>
+                    <li>Are images extracted cleanly without distortion or inappropriate cropping?</li>
+                    <li>Are any existing alternative text descriptions preserved?</li>
+                    <li>Are decorative images correctly identified?</li>
+                    <li>Are captions for images and tables correctly identified?</li>
+                    <li>Are tables converted accurately while maintaining their structure and cell relationships?</li>
+                </ul>
+            </section>
+
+            <section id="metadata">
+                <h4>Metadata</h4>
+                <ul>
+                    <li>Is existing document metadata correctly transferred from the PDF?</li>
+                </ul>
+            </section>
+        </section>
+
+        <section id="generated-content">
+            <h3>Generated Content</h3>
+            <ul>
+                <li>Are suitable alternative text descriptions generated for non-decorative images without alt text?</li>
+                <li>Is generated metadata complete and accurate?</li>
+            </ul>
+        </section>
+
+        <section id="standards-compliance">
+            <h3>Standards Compliance</h3>
+            <ul>
+                <li>Does the output validate against the target format's standards?</li>
+            </ul>
+        </section>
+    </section>
+
+    <section id="test-management">
+        <h2>Test Management and Reporting</h2>
+        <p>
+            There is a wide range of commercial and open-source tools and
+            services that could help manage the evaluation tests and to
+            generate the reports. This approach should enable systematic
+            tracking of conversion service performance over time and
+            facilitate data-driven comparison across multiple services and
+            versions.
+        </p>
+    </section>
+
+    <section id="outcomes">
+        <h2>Outcomes</h2>
+        <p>
+            This evaluation process will provide valuable insights into the
+            strengths and limitations of current PDF conversion technologies.
+            The results will help organizations make informed decisions when
+            selecting conversion services and will identify areas where
+            further development is needed.
+        </p>
+    </section>
+</body>
+</html>
