@@ -40,7 +40,21 @@
             ],
             maxTocLevel: 4,
             includePermalinks: true,
-            noReSpecUI: true
+            noReSpecUI: true,
+            // ReSpec's "base" status adds a W3C-internal boilerplate paragraph
+            // and a W3C copyright line. This is a DAISY Consortium document,
+            // so remove them.
+            postProcess: [
+                function () {
+                    var sotd = document.querySelector("#sotd");
+                    if (sotd) {
+                        var p = sotd.querySelector("p");
+                        if (p && /W3C/.test(p.textContent)) p.remove();
+                    }
+                    var c = document.querySelector(".head .copyright");
+                    if (c) c.remove();
+                }
+            ]
         };
     </script>
     <link rel="stylesheet" type="text/css" href="../../../common/styles.css">
