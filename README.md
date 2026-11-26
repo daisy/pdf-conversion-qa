@@ -6,8 +6,8 @@ The framework is written as a [ReSpec](https://respec.org/docs/) document.
 
 ## Read the framework
 
-- [Editors' Working Draft](https://ways2read.github.io/pdf-conversion-qa/framework/draft/) (latest)
-- [Working Draft, 6 April 2026](https://ways2read.github.io/pdf-conversion-qa/framework/published/WD-20260406/) (published version)
+- [Editors' Working Draft](https://daisy.github.io/pdf-conversion-qa/framework/draft/) (latest)
+- [Working Draft, 6 April 2026](https://daisy.github.io/pdf-conversion-qa/framework/published/WD-20260406/) (published version)
 
 ## Test protocol
 
